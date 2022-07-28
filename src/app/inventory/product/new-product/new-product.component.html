@@ -1,0 +1,83 @@
+<h1 mat-dialog-title>Nuevo producto</h1>
+<form [formGroup]='newProductForm' (ngSubmit)='onSubmit($event)'>
+  <div mat-dialog-content class='dialog-content' >
+    <div class='row'>
+      <div class='col-sm-6'>
+        <mat-form-field appearance='outline' class='input'>
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder='Coca cola 500ml.' autocomplete='off' formControlName='name' required> 
+          <mat-error *ngIf="newProductForm.controls.name.invalid">
+            <span *ngIf="newProductForm.controls.name.errors?.['required']">
+              Debe ingresar un valor
+            </span>
+            <span *ngIf="newProductForm.controls.name.errors?.['minlength']">
+              Mínimo 3 caracteres
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class='col-sm-6'>
+        <mat-form-field appearance='outline' class='input '>
+          <mat-label>Precio venta</mat-label>
+          <!-- Hidden input use to prevent chrome from suggesting an storng password in no password inputs -->
+          <input name='disable-pwd-mgr-1' type='password' id='disable-pwd-mgr-1' style='display: none;' value='disable-pwd-mgr-1' />
+          <!-- -->
+          <input matInput type='number' placeholder='S/. 0.00' required autocomplete='off' class='input-number' formControlName='price' min='0.05'>
+          <mat-error *ngIf="newProductForm.controls.price.invalid">
+            <span *ngIf="newProductForm.controls.price.errors?.['required']">
+              Debe ingresar un valor
+            </span>
+            <span *ngIf="newProductForm.controls.price.errors?.['min']">
+              Mínimo valor S/. 0.1
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-6'>
+        <mat-form-field appearance='outline' class='input'>
+          <mat-label>Precio compra paquete</mat-label>
+          <input matInput type='number' placeholder='S/. 0.00' autocomplete='off' class='input-number' formControlName='cost'>
+          <mat-error *ngIf="newProductForm.controls.cost.invalid">
+            <span *ngIf="newProductForm.controls.cost.errors?.['min']">
+              Mínimo valor S/. 0.1
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class='col-sm-6'>
+        <mat-form-field appearance='outline' class='input'>
+          <mat-label>Unidades por paquete</mat-label>
+          <input matInput type='number' placeholder='0' autocomplete='off' class='input-number' formControlName='unitsPerPackage'>
+          <mat-error *ngIf="newProductForm.controls.unitsPerPackage.invalid">
+            <span *ngIf="newProductForm.controls.unitsPerPackage.errors?.['min']">
+              Mínimo valor 1 und.
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-6'>
+        <mat-form-field appearance="outline" class='input'>
+          <mat-label>Categoría</mat-label>
+          <mat-select name="categoria" required formControlName='category'>
+            <mat-option *ngFor="let category of categoriesList" [value]="category.id">
+              {{category.nombre}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="newProductForm.controls.category.invalid">
+            <span *ngIf="newProductForm.controls.category.errors?.['required']">
+              Debe seleccionar una opción
+            </span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions align='end'>
+    <button mat-button mat-dialog-close>Cerrar</button>
+    <button type="submit" mat-button cdkFocusInitial>Guardar</button>
+  </div>  
+</form>

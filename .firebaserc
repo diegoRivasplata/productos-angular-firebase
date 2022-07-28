@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "api-productos-5b458"
+  },
+  "targets": {
+    "api-productos-5b458": {
+      "hosting": {
+        "angular-productos": [
+          "api-productos-5b458"
+        ]
+      }
+    }
+  }
+}

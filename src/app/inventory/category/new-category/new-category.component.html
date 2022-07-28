@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Nueva categoría</h1>
+<form (ngSubmit)='onSubmit($event, nombreCategoria.value)'>
+    <div mat-dialog-content class="dialog-content">
+        <mat-form-field appearance="outline">
+            <mat-label>Ingresa un nombre</mat-label>
+            <input matInput placeholder="Galletas, bebidas, etc." [formControl]="nameFormControl" required #nombreCategoria>
+            <mat-error *ngIf="nameFormControl.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cerrar</button>
+        <button type="submit" mat-button cdkFocusInitial>Guardar</button>
+    </div>    
+</form>

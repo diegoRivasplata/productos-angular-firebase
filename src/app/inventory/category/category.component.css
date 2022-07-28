@@ -1,0 +1,43 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 1rem;
+  width: 50%;
+}
+
+.mat-input{
+  width: 50%;
+}
+
+td, th {
+  width: 50%;
+}
+
+.table-container{
+  padding: 0 20px 20px 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.cabecera{
+  display: flex;
+  align-items: center;
+}
+
+.bntNuevo{
+  margin: 0 20px;
+}
+
+tr.mat-row:hover {
+  background-color: whitesmoke;
+}
+
+.loading-spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  height: 50vh;
+}

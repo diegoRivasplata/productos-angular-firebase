@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Editar categoría</h1>
+<div mat-dialog-content class="dialog-content">
+    <mat-form-field appearance="outline">
+        <mat-label>Ingresa un nombre</mat-label>
+        <input matInput placeholder="Galletas, bebidas, etc." [formControl]="nameFormControl" required #categoryName [value]="data.nombre">
+        <mat-error *ngIf="nameFormControl.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cerrar</button>
+    <button type="submit" mat-button cdkFocusInitial (click)="onUpdateCategory($event, categoryName.value)">Guardar</button>
+</div>
